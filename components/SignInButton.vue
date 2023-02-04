@@ -1,5 +1,7 @@
 <template>
-  <button type="submit" class="signin-button">Sign In</button>
+  <nuxt-link to="/download" class="link">
+    <button type="submit" class="signin-button">Sign In</button>
+  </nuxt-link>
 </template>
 
 <script>
@@ -9,6 +11,10 @@
 </script>
 
 <style scoped>
+  .link {
+    margin-left: auto;
+    margin-right: auto;
+  }
   .signin-button {
     background: linear-gradient(45deg, rgba(34,40,49,1) 0%, rgba(34,40,49,0.9080882352941176) 71%, rgba(34,40,49,0.7792366946778712) 91%, rgba(34,40,49,0.6896008403361344) 100%);
     font-weight: 800;
@@ -18,8 +24,6 @@
     width: 300px;
     height: 52px;
     margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
   }
   .signin-button:hover {
     background: linear-gradient(45deg, rgba(34,40,49,1) 0%, rgba(34,40,49,0.9080882352941176) 37%, rgba(34,40,49,0.7792366946778712) 68%, rgba(34,40,49,0.6896008403361344) 100%);
