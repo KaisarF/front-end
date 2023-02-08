@@ -9,11 +9,25 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Form from '../components/Form.vue'
 import LoginTitle from '../components/LoginTitle.vue';
 
 export default {
     name: "IndexPage",
+    async created() {
+      let getCookie = document.cookie
+      if (getCookie != "") {
+        let cookie = getCookie.split("Session=")
+        const response = await axios.post('http://localhost:5000/api/v1/get-status', {
+          cookies: cookie[1]
+        })
+        if (response.status == 200) {
+          window.location.href = '/download'
+        }
+      }
+      
+    },
 }
 </script>
 

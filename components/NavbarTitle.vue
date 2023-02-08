@@ -3,14 +3,39 @@
     <h1 class="title">ADN DOWNLOAD MANAGER</h1>
     <div class="log-container">
       <h2>Logged in as,</h2>
-      <h2>Admin Regional</h2>
+      <h2 >Admin {{ statusweb.status }}</h2>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
   export default {
     name: 'NavbarTitle',
+    data() {
+      return {
+        statusweb: {
+          
+        },
+      }
+    },
+    created() {
+      this.statusAdmin()
+      console.log(this.statusweb)
+    },
+    methods: {
+      async statusAdmin(){
+        let getCookie = document.cookie
+        let cookie = getCookie.split("Session=")
+        const response = await axios.post('http://localhost:5000/api/v1/get-status', {
+          cookies: cookie[1]
+        }).catch(() => {
+          window.location.href = '/'
+        })
+        this.$set(this.statusweb, 'status', response.data.statusadmin)
+      }
+      
+    }
   }
 </script>
 

@@ -13,5 +13,8 @@
 
   export default {
     name: "DownloadPage",
+    created() {
+      //alert("Welcome")
+    }
   } 
 </script>
