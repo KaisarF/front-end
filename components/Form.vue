@@ -34,19 +34,15 @@ export default {
       const response = await axios.post("http://localhost:5000/api/v1/login", {
         username: this.username,
         password: this.password
-      })
-      if (response.status == 202) {
+      }).catch(() => {
+        alert("Username or Password is wrong !!")
+        window.location.href = '/'
+      }).then((res) => {
         const expire = Math.floor(Date.now() / 1000) + (60 * 60)
         console.log("Post successfully created!") 
-        document.cookie = "Session="+response.data.token+";"+expire+";path=/"
-        window.location.href = '/download';
-      } else {
-        alert("Username or Password is wrong !!")
-      }
-      
-
-      
-      
+        document.cookie = "Session="+res.data.token+";"+expire+";path=/"
+        window.location.href = '/download'
+      })
     },
   }
 }
