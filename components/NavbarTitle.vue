@@ -30,6 +30,7 @@ import axios from 'axios'
         const response = await axios.post('http://localhost:5000/api/v1/get-status', {
           cookies: cookie[1]
         }).catch(() => {
+          alert("You don't have access")
           window.location.href = '/'
         })
         this.$set(this.statusweb, 'status', response.data.statusadmin)

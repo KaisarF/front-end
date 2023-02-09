@@ -9,7 +9,7 @@ import UsernameInput from './UsernameInput.vue';
     </div>
     <div class="input-card">
       <label class="label-title">Password</label>
-      <input class="input-field" type="password" placeholder="e.g. ineedadn123" v-model="password" required>
+      <input class="input-field" type="password" placeholder="e.g. ineedadn123" v-model="password" required >
     </div>
     
     <div class="link">
@@ -34,14 +34,19 @@ export default {
       const response = await axios.post("http://localhost:5000/api/v1/login", {
         username: this.username,
         password: this.password
-      }).catch(() => {
-        alert("Username or Password is wrong !!")
-        window.location.href = '/'
+      }).catch((err) => {
+        console.log(err)
       }).then((res) => {
-        const expire = Math.floor(Date.now() / 1000) + (60 * 60)
-        console.log("Post successfully created!") 
-        document.cookie = "Session="+res.data.token+";"+expire+";path=/"
-        window.location.href = '/download'
+        if (res === undefined) {
+          alert("Incorrect Username or Password!!")
+        } else{
+          if (res.status == 202) {
+            const expire = Math.floor(Date.now() / 1000) + (60 * 60)
+            console.log("Post successfully created!") 
+            document.cookie = "Session="+res.data.token+";"+expire+";path=/"
+            window.location.href = '/download';
+          }
+        }
       })
     },
   }

@@ -9,17 +9,44 @@
         <th>Waktu</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody v-for="item in items">
       <tr>
-        <td></td>
+        <td>{{ item.no }}</td>
+        <td>{{ item.msisdn }}</td>
+        <td>{{ item.sms }}</td>
+        <td>{{ item.tanggal }}</td>
+        <td>{{ item.waktu }}</td>
       </tr>
     </tbody>
   </table>
 </template>
 
 <script>
+import axios from 'axios'
   export default {
     name: 'AdnTable',
+    data(){
+      return{
+        items: []
+      }
+    },
+    async created() {
+      let getCookie = document.cookie
+      let cookie = getCookie.split("Session=")
+      const response = await axios.post('http://localhost:5000/api/v1/getdataadn', {
+        cookies: cookie[1],
+      }).catch((err) => {
+        console.log(err)
+      }).then((res) => {
+        if (res === undefined) {
+          alert("Data Not Found")
+        } else {
+          console.log(res.data.data)
+          this.items = res.data.data
+        }
+      })
+      
+    }
   }
 </script>
 
