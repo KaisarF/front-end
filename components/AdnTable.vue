@@ -1,24 +1,26 @@
 <template>
-  <table>
-    <thead>
-      <tr class="table-row">
-        <th>No</th>
-        <th>MSISDN</th>
-        <th>SMS</th>
-        <th>Tanggal</th>
-        <th>Waktu</th>
-      </tr>
-    </thead>
-    <tbody v-for="item in items">
-      <tr>
-        <td>{{ item.no }}</td>
-        <td>{{ item.msisdn }}</td>
-        <td>{{ item.sms }}</td>
-        <td>{{ item.tanggal }}</td>
-        <td>{{ item.waktu }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="mx-6 rounded-md overflow-hidden">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-semibold bg-slate-200 uppercase tracking-wider">No</th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-semibold bg-slate-200 uppercase tracking-wider">MSISDN</th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-semibold bg-slate-200 uppercase tracking-wider">SMS</th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-semibold bg-slate-200 uppercase tracking-wider">Tanggal</th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-semibold bg-slate-200 uppercase tracking-wider">Waktu</th>
+        </tr>
+      </thead>
+      <tbody v-for="item in items" class="bg-white divide-y divide-gray-200">
+        <tr>
+          <td class="px-6 py-3 whitespace-nowrap">{{ item.no }}</td>
+          <td class="px-6 py-3 whitespace-nowrap">{{ item.msisdn }}</td>
+          <td class="px-6 py-3 whitespace-nowrap">{{ item.sms }}</td>
+          <td class="px-6 py-3 whitespace-nowrap">{{ item.tanggal }}</td>
+          <td class="px-6 py-3 whitespace-nowrap">{{ item.waktu }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -49,19 +51,3 @@ import axios from 'axios'
     }
   }
 </script>
-
-<style scoped>
-  thead {
-    background-color: rgba(57, 62, 70, 0.1)
-  }
-  .table-row {
-    display: grid;
-    grid-template-columns: 0.4fr 1.15fr 1.15fr 1.15fr 1.15fr;
-    height: 40px;
-    align-items: center;
-  }
-  table {
-    width: 96%;
-    margin-left: 30px;
-  }
-</style>
