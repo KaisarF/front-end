@@ -14,7 +14,8 @@
   export default {
     name: "DownloadPage",
     created() {
-      //alert("Welcome")
-    }
-  } 
+        //alert("Welcome")
+    },
+    components: { Navbar, GeneratorBox, AdnBox }
+} 
 </script>
