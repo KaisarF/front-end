@@ -6,14 +6,15 @@
             <form action="" class="flex flex-row flex-auto">
                 <div class="w-1/2">
                     <label for="username" class="label-username">Username</label>
-                    <input type="text" required name="username" id="username" placeholder="e.g john.com">
+                    <input class="input-add"  type="text" required name="username" id="username" placeholder="e.g john.com">
                     
                     <label for="regional" class="label-regional">Regional</label>
-                    <input type="text" required name="regional" id="regional" placeholder="Input Regional">
+                    <input class="input-add"  type="text" required name="regional" id="regional" placeholder="Input Regional">
 
                     <label for="status" class="label-status">Status Admin</label>
                     <div class="selectdiv">
-                        <select name="status" required autocomplete="off" id="status" placeholder="Select Admin Status">
+                        <img src="https://cdn-icons-png.flaticon.com/512/271/271228.png" class="img-select" alt="" srcset="">
+                        <select class="input-add"  name="status" required autocomplete="off" id="status" placeholder="Select Admin Status">
                             <option value="" selected hidden disabled class="unselect">Select Admin Status</option>
                             <option value="Web">Admin Web</option>
                             <option value="Regional">Admin Regional</option>
@@ -26,14 +27,14 @@
                 
                 <div class="w-1/2">
                     <label for="password" class="label-password">Password</label>
-                    <input type="password" required name="password" id="password" placeholder="e.g ineedadn123">
+                    <input class="input-add" type="password" required name="password" id="password" placeholder="e.g ineedadn123">
 
                     <label for="confirm" class="label-confirm">Confirm Password</label>
-                    <input type="password" required name="confirm" id="confirm" placeholder="e.g ineedadn123">
+                    <input class="input-add" type="password" required name="confirm" id="confirm" placeholder="e.g ineedadn123">
 
                     <div class="mt-9 flex flex-wrap gap-5 justify-center ">
-                        <button class="cancel" type="button" @click="cancel">Cancel</button>
-                        <button type="submit" class="save">Save</button>
+                        <button class="cancel button-add" type="button" @click="cancel">Cancel</button>
+                        <button type="submit" class="save button-add" @click="submitdata">Save</button>
                     </div>
                 </div>
                 
@@ -49,7 +50,7 @@
 
 
   export default {
-    name: "addUser",
+    name: "AddUser",
     data() {
       return {
         status: "Add New User",
@@ -63,16 +64,19 @@
     }, 
     methods: {
         cancel() {
-            window.location.href = '/download';
+            window.location.href = '/user-management';
+        },
+        submitdata() {
+            alert("tes")
         }
-    }
+    },
+    components: { Navbar}
   } 
 
   
 </script>
 
 <style>
-
     .button-input{
         margin-top: 35px;
         display: flex;
@@ -82,7 +86,7 @@
         justify-content: center;
     }
     
-    input, select{
+    .input-add{
         width: 95%;
         margin: 10px 10px 48px 10px;
         height: 55px;
@@ -101,18 +105,15 @@
         
     }
 
-    input::before, select{
+    .input-add::before{
         color: rgba(57, 62, 70, 0.2);
     }
     .selectdiv {
         position: relative;
     }
-    .selectdiv:after {
-        content: '<';
-        background: #000;
-        font-size: 24px;
-        font-weight: bolder;
-        color: rgba(57, 62, 70, 0.2);
+    .img-select {
+        position: absolute;
+        width: 35px;
         -webkit-transform: rotate(90deg);
         -moz-transform: rotate(90deg);
         -ms-transform: rotate(90deg);
@@ -120,14 +121,12 @@
         right: 40px; 
         /*Adjust for position however you want*/
         
-        top: 18px;
+        top: 19px;
+        opacity: 40%;
+        color: rgba(57, 62, 70, 0.2);
         padding: 0 0 2px;
-        /*left line */
-        
-        position: absolute;
         pointer-events: none;
     }
-
     .selectdiv select{
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -138,13 +137,25 @@
         -ms-word-break: normal;
         word-break: normal;
     }
-    option {
+    .input-add option {
         color: #000000;
+        height: 55px;
+        padding: 10px;
+        box-sizing: border-box;
+        background: #FFFFFF;
+        border: 1px solid #7C7D80;
+        border-radius: 5px;
+
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
     }
-    select::-ms-expand {
+    .input-add::-ms-expand {
         display: none;
     }
-    button {
+    .button-add {
         width: 153px;
         height: 52px;
         font-family: 'Montserrat';

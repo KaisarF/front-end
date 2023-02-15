@@ -31,10 +31,12 @@ export default {
   },
   methods: {
     async submitLogin() {
+      window.alert(this.username)
       const response = await axios.post("http://localhost:5000/api/v1/login", {
         username: this.username,
         password: this.password
       }).catch((err) => {
+        window.alert(err)
         console.log(err)
       }).then((res) => {
         if (res === undefined) {
@@ -44,6 +46,7 @@ export default {
             const expire = Math.floor(Date.now() / 1000) + (60 * 60)
             console.log("Post successfully created!") 
             document.cookie = "Session="+res.data.token+";"+expire+";path=/"
+            window.alert(res.status)
             window.location.href = '/download';
           }
         }
