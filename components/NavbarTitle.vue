@@ -6,6 +6,7 @@
       <h2 >Admin {{ statusweb.status }}</h2>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -15,7 +16,6 @@ import axios from 'axios'
     data() {
       return {
         statusweb: {
-          
         },
       }
     },
@@ -26,6 +26,10 @@ import axios from 'axios'
     methods: {
       async statusAdmin(){
         let getCookie = document.cookie
+        if (getCookie === "") {
+          alert("Session is Expired")
+          window.location.href = '/'
+        }
         let cookie = getCookie.split("Session=")
         const response = await axios.post('http://localhost:5000/api/v1/get-status', {
           cookies: cookie[1]
