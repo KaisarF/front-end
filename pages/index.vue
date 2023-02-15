@@ -25,17 +25,13 @@ export default {
       }).then((res) => {
         if (res === undefined) {
           document.cookie = "Session" + '="";expires=Thu, 01 Jan 1970 00:00:01 GMT;'
-          alert("Session is Expired")
+          
         } else {
           if (res.status === 200) {
             window.location.href = '/download'
           }
         }
-        
-        
       })
-      
-      
     },
 }
 </script>
