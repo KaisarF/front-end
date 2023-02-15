@@ -1,6 +1,6 @@
 <template>
   <ul class="container">
-    <nuxt-link to="/download" class="current-page">Download ADN</nuxt-link>
+    <nuxt-link to="/download">Download ADN</nuxt-link>
     <nuxt-link to="/">Request ADN</nuxt-link>
     <nuxt-link to="/user-management">User Management</nuxt-link>
     <nuxt-link to="/" >
@@ -41,10 +41,6 @@
   }
   a {
     text-align: center;
-  }
-  .current-page {
-    font-size: 16px;
-    font-weight: 500;
   }
   a:hover {
     font-weight: 500;
