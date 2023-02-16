@@ -30,11 +30,11 @@
                     <input class="input-add" type="password" required name="password" id="password" placeholder="e.g ineedadn123" v-model="password">
 
                     <label for="confirm" class="label-confirm">Confirm Password</label>
-                    <input class="input-add" type="password" required name="confirm" id="confirm" placeholder="e.g ineedadn123" v-model="passwordConfirm">
+                    <input class="input-add" type="password" required name="confirm" id="confirm" placeholder="e.g ineedadn123" v-model="passwordConfirm" value="{passwordConfirm}">
 
                     <div class="mt-9 flex flex-wrap gap-5 justify-center ">
                         <button class="cancel button-add" type="button" @click="cancel">Cancel</button>
-                        <button type="submit" class="save button-add" @click="submitdata">Save</button>
+                        <button type="button" class="save button-add" @click="submitdata">Save</button>
                     </div>
                 </div>
                 
@@ -70,23 +70,28 @@
             window.location.href = '/user-management';
         },
         async submitdata() {
-            await axios.post('http://localhost:5000/api/v1/register', {
-                "username" : this.username,
-                "password" : this.password,
-                "passwordConfirm" : this.passwordConfirm,
-                "region" : this.regional,
-                "status" : this.status
-            }).catch((err) => {
-                console.log(err)
-            }).then((res) => {
-                if (res === undefined) {
-                    alert("Empty data!")
-                } else{
-                    if (res.status == 201) {
-                        window.location.href = '/user-management';
+            if (this.username == '' && this.password == '') {
+                window.alert('Empty Data !!')
+            } else {
+                await axios.post('http://localhost:5000/api/v1/register', {
+                    "username" : this.username,
+                    "password" : this.password,
+                    "passwordConfirm" : this.passwordConfirm,
+                    "region" : this.regional,
+                    "status" : this.status
+                }).catch((err) => {
+                    console.log(err)
+                }).then((res) => {
+                    if (res === undefined) {
+                        alert("Empty data!")
+                    } else{
+                        if (res.status === 201) {
+                            window.location.href = '/user-management';
+                        }
                     }
-                }
-            })
+                })
+            }
+            
         }
     },
     components: { Navbar}
