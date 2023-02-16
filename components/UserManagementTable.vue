@@ -18,7 +18,7 @@
           <td class="px-6 py-3 whitespace-nowrap"><span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-md bg-green-100 text-green-800">Admin {{ item.status }}</span></td>
           <td class="px-6 py-3 whitespace-nowrap">
             <nuxt-link class="inline bg-blue-500 hover:bg-blue-700 text-white text-sm font-semibold py-2 px-4 rounded-md" :to="'/edit?id='+item.id">Edit</nuxt-link>
-            <nuxt-link class="inline bg-red-500 hover:bg-red-700 text-white text-sm font-semibold py-2 px-4 rounded-md" :to="{ name: 'delete', params: { id: 1 } }">Delete</nuxt-link>
+            <nuxt-link class="inline bg-red-500 hover:bg-red-700 text-white text-sm font-semibold py-2 px-4 rounded-md" :to="'/delete?id='+item.id">Delete</nuxt-link>
             
           </td>
         </tr>
