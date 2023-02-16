@@ -14,12 +14,14 @@
             
             <div id="input-area">
                 <InputComponent type="text" title="Data Label" placeholder="e.g SIK" />
-                <div >
-                    <ActionButton childclass="bg-green-500 w-10 h-10 rounded"  />
+                <div class="flex justify-items-start items-end">
+                    <button class="bg-green-500 w-10 h-10 rounded text-4xl text-white" >+</button>
                 </div>
-                
             </div>
             
+        </div>
+        <div class="mt-10 grid justify-items-end pr-20">
+            <button class=" bg-blue-500 w-140 h-15 rounded-md text-base p-2 text-white px-4">Submit</button>
         </div>
         
     </div>

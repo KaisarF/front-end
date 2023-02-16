@@ -17,10 +17,14 @@
         </div>
         <div class="fifth-row-left">
             <div class="check-box">
-                <CheckBoxComponent type="checkbox" title="White List Participant" name="parent-checkbox" value="White-list" id="parent-option" v-on:onclick="activateOptions()"/>
+                <input type="checkbox" name="parent-checkbox" value="White-list" id="parent-option" @click="activateOptions">
+                <label for="parent-checkbox">White List Participant</label><br>
                 <div class="check-box-child" >
-                    <CheckBoxComponent type="radio" title="Upload White List" name="child-checkbox1" value="upload-White-list" id="child-option-1" />
-                    <CheckBoxComponent type="radio" title="WhiteList from Existing Database" name="child-checkbox2" value="White-list-from-databse" id="child-option-2"/>
+                    <input type="radio" name="child-checkbox" value="upload-White-list" id="child-option-1" disabled>
+                <label for="parent-checkbox">Upload White List</label><br>
+                    
+                    <input type="radio" name="child-checkbox" value="White-list-from-databse" id="child-option-2" disabled>
+                <label for="parent-checkbox">WhiteList from Existing Database</label><br>
                 </div>
             </div>
         </div>
@@ -44,17 +48,17 @@ export default {
         CheckBoxComponent
     },methods: {
        activateOptions() {
-  var option1 = document.getElementById("parent-option");
-  var option2 = document.getElementById("child-option-1");
-  var option3 = document.getElementById("child-option-2");
-  if (option1.checked == true) {
-    option2.disabled = false;
-    option3.disabled = false;
-  } else {
-    option2.disabled = true;
-    option3.disabled = true;
-  }
-}
+        var option1 = document.getElementById("parent-option");
+        var option2 = document.getElementById("child-option-1");
+        var option3 = document.getElementById("child-option-2");
+            if (option1.checked == true) {
+                option2.disabled = false;
+                option3.disabled = false;
+            } else {
+                 option2.disabled = true;
+                option3.disabled = true;
+            }
+        }
     }
   }
 
