@@ -35,7 +35,6 @@ export default {
         username: this.username,
         password: this.password
       }).catch((err) => {
-        window.alert(err)
         console.log(err)
       }).then((res) => {
         if (res === undefined) {

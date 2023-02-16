@@ -6,19 +6,19 @@
             <form action="" class="flex flex-row flex-auto">
                 <div class="w-1/2">
                     <label for="username" class="label-username">Username</label>
-                    <input class="input-add"  type="text" required name="username" id="username" placeholder="e.g john.com">
+                    <input class="input-add"  type="text" required name="username" id="username" placeholder="e.g john.com" v-model="username" value="{username}">
                     
                     <label for="regional" class="label-regional">Regional</label>
-                    <input class="input-add"  type="text" required name="regional" id="regional" placeholder="Input Regional">
+                    <input class="input-add"  type="text" required name="regional" id="regional" placeholder="Input Regional" v-model="regional" value="{regional}">
 
                     <label for="status" class="label-status">Status Admin</label>
                     <div class="selectdiv">
                         <img src="https://cdn-icons-png.flaticon.com/512/271/271228.png" class="img-select" alt="" srcset="">
                         <select class="input-add"  name="status" required autocomplete="off" id="status" placeholder="Select Admin Status">
                             <option value="" selected hidden disabled class="unselect">Select Admin Status</option>
-                            <option value="Web">Admin Web</option>
-                            <option value="Regional">Admin Regional</option>
-                            <option value="User">User</option>
+                            <option value="Web" :selected="status === 'Web' ? true : false ">Admin Web</option>
+                            <option value="Regional" :selected="status === 'Regional' ? true : false ">Admin Regional</option>
+                            <option value="User" :selected="status === 'User' ? true : false ">Admin User</option>
                         </select>
                     </div>
                     
@@ -34,7 +34,7 @@
 
                     <div class="mt-9 flex flex-wrap gap-5 justify-center ">
                         <button class="cancel button-add" type="button" @click="cancel">Cancel</button>
-                        <button type="submit" class="save button-add" @click="submitdata">Save</button>
+                        <button type="submit" class="save button-add" @submit="submitdata">Save</button>
                     </div>
                 </div>
                 
@@ -54,25 +54,47 @@
     name: "AddUser",
     data() {
       return {
-        status: "Add New User",
+        username: '',
+        regional: '',
+        status: '',
+        password: '',
+        passwordConfirm: '',
       }
     },
     props: {
         id: Number,
     },
-    created() {
+    async created() {
         //var field = document.getElementById('password');
         //var confirmField = document.getElementById('confirm');
         //var fortify = new Fortify(field, confirmField);
+        let getCookie = document.cookie
+        let cookie = getCookie.split("Session=")
         let ulrParams = new URLSearchParams(window.location.search)
-        window.alert(ulrParams.get('id'))
+
+        await axios.post('http://localhost:5000/api/v1/getdatauser', {
+            cookies: cookie[1],
+            id : ulrParams.get('id'),
+        }).catch((err) => {
+            console.log(err)
+        }).then((res) => {
+            if (res === undefined) {
+                alert("Incorrect Id - "+ulrParams.get('id')+"!!")
+            } else{
+                if (res.status == 200) {
+                    this.username = res.data.data.user_domain
+                    this.regional = res.data.data.regional
+                    this.status = res.data.data.status
+                }
+            }
+        })
     }, 
     methods: {
         cancel() {
             window.location.href = '/user-management';
         },
         submitdata() {
-            alert("tes")
+            
         }
     },
     components: { Navbar}
@@ -106,6 +128,7 @@
         font-weight: 700;
         font-size: 20px;
         line-height: 24px;
+        color: #b8b9be;
 
         
     }
@@ -118,7 +141,7 @@
     }
     .img-select {
         position: absolute;
-        width: 35px;
+        width: 30px;
         -webkit-transform: rotate(90deg);
         -moz-transform: rotate(90deg);
         -ms-transform: rotate(90deg);
@@ -141,9 +164,10 @@
         line-height: 1.75;
         -ms-word-break: normal;
         word-break: normal;
+        color: #b8b9be;
     }
     .input-add option {
-        color: #000000;
+        color: #b8b9be;
         height: 55px;
         padding: 10px;
         box-sizing: border-box;

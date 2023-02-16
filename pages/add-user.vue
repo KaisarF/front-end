@@ -6,19 +6,19 @@
             <form action="" class="flex flex-row flex-auto">
                 <div class="w-1/2">
                     <label for="username" class="label-username">Username</label>
-                    <input class="input-add"  type="text" required name="username" id="username" placeholder="e.g john.com">
+                    <input class="input-add"  type="text" required name="username" id="username" placeholder="e.g john.com" v-model="username">
                     
                     <label for="regional" class="label-regional">Regional</label>
-                    <input class="input-add"  type="text" required name="regional" id="regional" placeholder="Input Regional">
+                    <input class="input-add"  type="text" required name="regional" id="regional" placeholder="Input Regional" v-model="regional">
 
                     <label for="status" class="label-status">Status Admin</label>
                     <div class="selectdiv">
                         <img src="https://cdn-icons-png.flaticon.com/512/271/271228.png" class="img-select" alt="" srcset="">
-                        <select class="input-add"  name="status" required autocomplete="off" id="status" placeholder="Select Admin Status">
+                        <select class="input-add"  name="status" required autocomplete="off" id="status" placeholder="Select Admin Status" v-model="status">
                             <option value="" selected hidden disabled class="unselect">Select Admin Status</option>
                             <option value="Web">Admin Web</option>
                             <option value="Regional">Admin Regional</option>
-                            <option value="User">User</option>
+                            <option value="User">Admin User</option>
                         </select>
                     </div>
                     
@@ -27,10 +27,10 @@
                 
                 <div class="w-1/2">
                     <label for="password" class="label-password">Password</label>
-                    <input class="input-add" type="password" required name="password" id="password" placeholder="e.g ineedadn123">
+                    <input class="input-add" type="password" required name="password" id="password" placeholder="e.g ineedadn123" v-model="password">
 
                     <label for="confirm" class="label-confirm">Confirm Password</label>
-                    <input class="input-add" type="password" required name="confirm" id="confirm" placeholder="e.g ineedadn123">
+                    <input class="input-add" type="password" required name="confirm" id="confirm" placeholder="e.g ineedadn123" v-model="passwordConfirm">
 
                     <div class="mt-9 flex flex-wrap gap-5 justify-center ">
                         <button class="cancel button-add" type="button" @click="cancel">Cancel</button>
@@ -46,6 +46,7 @@
 
 <script>
   import Navbar from '~/components/Navbar.vue';
+  import axios from 'axios';
   //import Fortify from "fortify-js";
 
 
@@ -53,21 +54,39 @@
     name: "AddUser",
     data() {
       return {
-        status: "Add New User",
+        username: '',
+        password: '',
+        passwordConfirm: '',
+        status: '',
+        regional: '',
       }
     },
     created() {
-        //var field = document.getElementById('password');
-        //var confirmField = document.getElementById('confirm');
-        //var fortify = new Fortify(field, confirmField);
+        
         
     }, 
     methods: {
         cancel() {
             window.location.href = '/user-management';
         },
-        submitdata() {
-            alert("tes")
+        async submitdata() {
+            await axios.post('http://localhost:5000/api/v1/register', {
+                "username" : this.username,
+                "password" : this.password,
+                "passwordConfirm" : this.passwordConfirm,
+                "region" : this.regional,
+                "status" : this.status
+            }).catch((err) => {
+                console.log(err)
+            }).then((res) => {
+                if (res === undefined) {
+                    alert("Empty data!")
+                } else{
+                    if (res.status == 201) {
+                        window.location.href = '/user-management';
+                    }
+                }
+            })
         }
     },
     components: { Navbar}
@@ -101,6 +120,7 @@
         font-weight: 700;
         font-size: 20px;
         line-height: 24px;
+        color: #b8b9be;
 
         
     }
@@ -113,7 +133,7 @@
     }
     .img-select {
         position: absolute;
-        width: 35px;
+        width: 30px;
         -webkit-transform: rotate(90deg);
         -moz-transform: rotate(90deg);
         -ms-transform: rotate(90deg);
@@ -136,9 +156,10 @@
         line-height: 1.75;
         -ms-word-break: normal;
         word-break: normal;
+        color: #b8b9be;
     }
     .input-add option {
-        color: #000000;
+        color: #b8b9be;
         height: 55px;
         padding: 10px;
         box-sizing: border-box;
