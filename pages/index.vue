@@ -1,11 +1,12 @@
 <template>
-  <div id="app">
-    <LoginTitle />
-    <Form />
-    <img class="vector1" src="../assets/image/vector1.png" alt="vector">
-    <img class="vector2" src="../assets/image/vector2.png" alt="vector2">
+  <div class="container mt-16">
+    <div id="app" class="flex flex-col">
+      <LoginTitle />
+      <Form />
+      <img class="vector1" src="../assets/image/vector1.png" alt="vector">
+      <img class="vector2" src="../assets/image/vector2.png" alt="vector2">
+    </div>
   </div>
-  
 </template>
 
 <script>

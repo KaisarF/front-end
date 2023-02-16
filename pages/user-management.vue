@@ -1,7 +1,6 @@
 <template>
   <div>
     <Navbar />
-    <h2 class="text-xl font-bold my-6 mx-12">User Management</h2>
     <UserManagementBox />
   </div>
 </template>

@@ -1,9 +1,9 @@
 <template>
-  <div class="title">
-    <h1>WELCOME TO</h1>
-    <h2>ADN DOWNLOAD MANAGER</h2>
+  <div class="mt-8 mb-8 mx-auto">
+    <h1 class="font-black text-slate-700 drop-shadow-sm text-3xl text-center">WELCOME TO</h1>
+    <h2 class="font-extrabold text-slate-900 drop-shadow-sm text-xl text-center">ADN DOWNLOAD MANAGER</h2>
   </div>
-</template>
+</template> 
 
 <script>
   export default {
@@ -11,7 +11,7 @@
   }
 </script>
 
-<style scoped>
+<!-- <style scoped>
   .title {
     position: relative;
     top: 100px;
@@ -27,4 +27,4 @@
     font-size: 24px;
     font-weight: 800;
   }
-</style>
+</style> -->

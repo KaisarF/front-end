@@ -30,7 +30,7 @@
 
 <style scoped>
   .container {
-    width: 55%;
+    width: 56%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 50px;

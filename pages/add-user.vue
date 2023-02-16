@@ -16,7 +16,7 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/271/271228.png" class="img-select" alt="" srcset="">
                         <select class="input-add"  name="status" required autocomplete="off" id="status" placeholder="Select Admin Status" v-model="status">
                             <option value="" selected hidden disabled class="unselect">Select Admin Status</option>
-                            <option value="Web">Admin Web</option>
+                            <option value="Web">Admin Web</option>  
                             <option value="Regional">Admin Regional</option>
                             <option value="User">Admin User</option>
                         </select>
