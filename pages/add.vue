@@ -47,7 +47,6 @@
   import Navbar from '~/components/Navbar.vue';
   //import Fortify from "fortify-js";
 
-
   export default {
     name: "addUser",
     data() {
@@ -65,7 +64,8 @@
         cancel() {
             window.location.href = '/download';
         }
-    }
+    },
+    components: { Navbar }
   } 
 
   
