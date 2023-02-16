@@ -1,7 +1,7 @@
 <template>
   <ul class="container">
     <nuxt-link to="/download">Download ADN</nuxt-link>
-    <nuxt-link to="/">Request ADN</nuxt-link>
+    <nuxt-link to="/request-page">Request ADN</nuxt-link>
     <nuxt-link to="/user-management">User Management</nuxt-link>
     <nuxt-link to="/" >
       <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" @click="clearCookie">
