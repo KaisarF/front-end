@@ -1,19 +1,17 @@
-
-import UsernameInput from './UsernameInput.vue';
-
 <template>
-  <form class="card">
-    <div class="input-card">
-      <label class="label-title">Username</label>
-      <input class="input-field" type="text" placeholder="e.g. john.com" v-model="username" required>
+  <form class="container max-w-lg px-16 py-14 bg-white rounded-md shadow-md mx-auto">
+    <div class="flex flex-col">
+      <label for="username" class="mb-2 text-md font-bold text-slate-500">Username</label>
+      <input id="username" class="border border-slate-300 text-slate-500 text-md rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full px-12 py-3 mb-6" type="text" placeholder="e.g. john.com" v-model="username" required>
     </div>
-    <div class="input-card">
-      <label class="label-title">Password</label>
-      <input class="input-field" type="password" placeholder="e.g. ineedadn123" v-model="password" required >
+
+    <div class="flex flex-col">
+      <label for="password" class="mb-2 text-md font-bold text-slate-500">Password</label>
+      <input id="password" class="border border-slate-300 text-slate-500 text-md rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full px-12 py-3 mb-6" type="password" placeholder="e.g. ineedadn123" v-model="password" required >
     </div>
     
-    <div class="link">
-      <button type="submit" class="signin-button" @click="submitLogin">Sign In</button>
+    <div class="flex ">
+      <button type="submit" class="bg-gradient-to-r from-slate-800 to-slate-600 mx-auto px-10 py-3 rounded-full w-full text-white font-bold shadow-md mt-3 mb-4 hover:from-slate-700 hover:to-slate-500 duration-300 transition ease-in-out" @click="submitLogin">Sign In</button>
     </div>
   </form>
 </template>
@@ -56,7 +54,7 @@ export default {
 }
 </script>
 
-<style>
+<!-- <style>
   .card {
     display: flex;
     width: 550px;
@@ -117,4 +115,4 @@ export default {
   .signin-button:hover {
     background: linear-gradient(45deg, rgba(34,40,49,1) 0%, rgba(34,40,49,0.9080882352941176) 37%, rgba(34,40,49,0.7792366946778712) 68%, rgba(34,40,49,0.6896008403361344) 100%);
   }
-</style>
+</style> -->

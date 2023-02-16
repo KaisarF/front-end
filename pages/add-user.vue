@@ -16,7 +16,7 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/271/271228.png" class="img-select" alt="" srcset="">
                         <select class="input-add"  name="status" required autocomplete="off" id="status" placeholder="Select Admin Status">
                             <option value="" selected hidden disabled class="unselect">Select Admin Status</option>
-                            <option value="Web">Admin Web</option>
+                            <option value="Web">Admin Web</option>  
                             <option value="Regional">Admin Regional</option>
                             <option value="User">User</option>
                         </select>
@@ -46,7 +46,7 @@
 
 <script>
   import Navbar from '~/components/Navbar.vue';
-  //import Fortify from "fortify-js";
+  // import Fortify from "fortify-js";
 
 
   export default {
