@@ -46,6 +46,7 @@
 
 <script>
   import Navbar from '~/components/Navbar.vue';
+  import axios from 'axios';
   //import Fortify from "fortify-js";
 
 
@@ -56,11 +57,15 @@
         status: "Add New User",
       }
     },
+    props: {
+        id: Number,
+    },
     created() {
         //var field = document.getElementById('password');
         //var confirmField = document.getElementById('confirm');
         //var fortify = new Fortify(field, confirmField);
-        
+        let ulrParams = new URLSearchParams(window.location.search)
+        window.alert(ulrParams.get('id'))
     }, 
     methods: {
         cancel() {
